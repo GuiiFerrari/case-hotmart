@@ -1,0 +1,10 @@
+services:
+  marqo:
+    container_name: marqo
+    image: marqoai/marqo:latest
+    volumes:
+      - .src/db/marqo_data:/marqo_data
+    ports:
+      - "8882:8882"
+    restart: always
+    command: [ "marqo" ]
