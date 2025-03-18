@@ -3,8 +3,33 @@ services:
     container_name: marqo
     image: marqoai/marqo:latest
     volumes:
-      - .src/db/marqo_data:/marqo_data
+      - ./src/db:/marqo_data
     ports:
       - "8882:8882"
     restart: always
     command: [ "marqo" ]
+  scraper:
+    container_name: scraper
+    build: ./src/scraping
+    restart: always
+    environment:
+      - MARQO_HOST=marqo
+      - MARQO_PORT=8882
+      - API_HOST=0.0.0.0
+    ports:
+      - "5001:5001"
+    depends_on:
+      - marqo
+  api:
+    container_name: api
+    build: ./src/api
+    # restart: always
+    environment:
+      - MARQO_HOST=marqo
+      - MARQO_PORT=8882
+      - API_HOST=0.0.0.0
+      - MODEL_TEMPERATURE=0.5
+    ports:
+      - "5000:5000"
+    depends_on:
+      - marqo

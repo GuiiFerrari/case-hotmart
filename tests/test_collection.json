@@ -1,0 +1,259 @@
+{
+  "info": {
+    "name": "hotmart",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "bruno",
+      "event": []
+    },
+    {
+      "name": "Prompt hotmart",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:5000/ask?question=O que é a hotmart?",
+          "protocol": "http",
+          "host": [
+            "localhost:5000"
+          ],
+          "path": [
+            "ask"
+          ],
+          "query": [
+            {
+              "key": "question",
+              "value": "O que é a hotmart?"
+            }
+          ],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "startup scripts",
+      "item": [
+        {
+          "name": "Fill hotmart info",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": ""
+            },
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Fill hotmart info v2",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": ""
+            },
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "tests",
+      "item": [
+        {
+          "name": "health api",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:5000/health",
+              "protocol": "http",
+              "host": [
+                "localhost:5000"
+              ],
+              "path": [
+                "health"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "health db",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:5000/db/health",
+              "protocol": "http",
+              "host": [
+                "localhost:5000"
+              ],
+              "path": [
+                "db",
+                "health"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Prompt teste simples",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:5000/ask?question=Qual a capital do Brasil?",
+              "protocol": "http",
+              "host": [
+                "localhost:5000"
+              ],
+              "path": [
+                "ask"
+              ],
+              "query": [
+                {
+                  "key": "question",
+                  "value": "Qual a capital do Brasil?"
+                }
+              ],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "store simples",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:5001/db/store_info_to_index?text=a&index_name=test",
+              "protocol": "http",
+              "host": [
+                "localhost:5001"
+              ],
+              "path": [
+                "db",
+                "store_info_to_index"
+              ],
+              "query": [
+                {
+                  "key": "text",
+                  "value": "a"
+                },
+                {
+                  "key": "index_name",
+                  "value": "test"
+                }
+              ],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "health scraping api",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:5001/health",
+              "protocol": "http",
+              "host": [
+                "localhost:5001"
+              ],
+              "path": [
+                "health"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "health db via scraping api",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "http://localhost:5001/db/health",
+              "protocol": "http",
+              "host": [
+                "localhost:5001"
+              ],
+              "path": [
+                "db",
+                "health"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": []
+}

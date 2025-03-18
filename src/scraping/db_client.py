@@ -1,38 +1,44 @@
 import logging
-import marqo
 import os
-import sys
 
-BASE_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(os.path.join(BASE_PATH, ".."))
-sys.path.append(os.path.join(BASE_PATH, "..", ".."))
+from marqo.client import Client
+from marqo.index import Index
 
-from fetchers import fetch_info_from
-
-HOST = "http://localhost"
-PORT = "8882"
+HOST = "http://" + os.getenv("MARQO_HOST", "localhost")
+PORT = os.getenv("MARQO_PORT", "8882")
 LOGGER = logging.getLogger(__name__)
 
 
 class MarqoClient:
 
     def __init__(self):
-        self.client = marqo.Client(f"{HOST}:{PORT}")
+        self.client = Client(f"{HOST}:{PORT}")
 
     def health(self):
         return self.client.http.get("/health")
 
-    def store_info_from_url(self, url: str, index_name: str = "web-content"):
+    def store_infos_to_index(
+        self,
+        infos: list[dict[str, str]],
+        index_name: str,
+        tensor_fields: list[str] = ["text"],
+    ):
         try:
             self.client.create_index(index_name)
         except Exception:
             pass
-        infos: list[dict] = fetch_info_from(url)
-        self.client.index(index_name).add_documents(infos, tensor_fields=["text"])
-        LOGGER.info(f"Stored infos from {url} in index {index_name}")
+        tensor_fields = ["text"]
+        index: Index = self.client.index(index_name)
+        res = index.add_documents(infos, tensor_fields=tensor_fields)
+        LOGGER.info(f"Stored infos in index {index_name}")
 
-    def search(self, query: str, index_name: str = "web-content"):
-        search_results = self.client.index(index_name).search(
+    def search(
+        self,
+        query: str,
+        index_name: str = "web-content",
+    ):
+        index: Index = self.client.index(index_name)
+        search_results = index.search(
             query, searchable_attributes=["text"], search_method="TENSOR"
         )
         return search_results

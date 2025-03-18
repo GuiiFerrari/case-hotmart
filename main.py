@@ -1,7 +1,9 @@
 import logging
-from src.db.client import MarqoClient
+from src.scraping.db_client import MarqoClient
 
 LOGGER = logging.getLogger(__name__)
+
+# https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF/blob/main/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf
 
 
 def run_process():

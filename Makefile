@@ -1,4 +1,5 @@
-.PHONY: run_full_api
+.PHONY: run
 
-run_full_api:
+
+run:
 	docker-compose up -d --build

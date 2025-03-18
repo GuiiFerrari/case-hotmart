@@ -6,7 +6,7 @@ from llama_cpp import Llama
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 MODELS_PATH = os.path.join(BASE_PATH, "models")
 
-models = glob.glob(os.path.join(MODELS_PATH, "*.gguf"))
+models = glob.glob(os.path.join(MODELS_PATH, "*"))
 
 LLAMA_MODEL_PATH = models[0]
 
@@ -16,14 +16,19 @@ class LLMModel:
         self._temperature = temperature
         self._max_tokens = max_tokens
         self.model = Llama(
-            model_path=LLAMA_MODEL_PATH, max_tokens=self._max_tokens, n_ctx=10000
+            model_path=LLAMA_MODEL_PATH,
+            max_tokens=self._max_tokens,
+            n_ctx=10_000,
         )
+
+    def embed(self, text: str):
+        return self.model.embed(text)
 
     def ask_question(self, question: str, context: str = None):
         enhanced_question = (
             f"Background: \n{context}\n\nQuestion: {question}\n\nAnswer:"
-            # if context
-            # else question
+            if context
+            else question
         )
         return self.model(
             enhanced_question,
