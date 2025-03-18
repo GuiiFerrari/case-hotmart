@@ -36,6 +36,8 @@ Para o check do banco de dados, basta fazer uma requisição GET para um dos doi
 
 Ambos devem retornar um JSON com a chave "status" e o valor "yellow" caso não tenham nenhum dado armazenado, após isso devem retornar "green".
 
+Antes de fazer perguntas referentes a hotmart, faça uma requisição POST para o endpoint http://localhost:5001/fetch_hotmart_info, com o argumento url=https://hotmart.com/pt-br/blog/como-funciona-hotmart. Isso irá preencher o banco de dados com as informações da página.
+
 ### Perguntas
 
 Para fazer perguntas, basta fazer uma requisição POST para o endpoint localhost:5000/ask, com o seguinte corpo:
