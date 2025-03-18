@@ -50,5 +50,5 @@ Para fazer perguntas, basta fazer uma requisição POST para o endpoint localhos
 
 O retorno será a resposta da LLM, onde para cada pergunta será feita uma busca no bando de dados para enriquecer a pergunta com contexto.
 
-Para exemplos de utilização, utilize o arquivo PostmanCollection.json, que contém exemplos de requisições para os dois microserviços, onde também contém alguns testes de funcionalidade.
+Para exemplos de utilização, utilize o Postman ou software similar com o arquivo test_collection.json dentro da pastas "tests", que contém exemplos de requisições para os dois microserviços, onde também contém alguns testes de funcionalidade.
 
